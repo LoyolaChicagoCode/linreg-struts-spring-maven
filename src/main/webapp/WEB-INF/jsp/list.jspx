@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+  xmlns:c="/tld/jstl-c" 
+  xmlns:fmt="/tld/jstl-fmt" 
+  xmlns:html="/tld/struts-html" 
+  version="2.0">
+  <jsp:directive.page contentType="text/html"/>
+  <html:xhtml/>
+  <html:html>
+    <head>
+      <title>
+        <fmt:message key="list.title"/>
+      </title>
+      <html:base/>
+    </head>
+    <body>
+      <h1>
+        <fmt:message key="global.heading"/>
+        <jsp:text>
+        </jsp:text>
+        <fmt:message key="list.heading"/>
+	    </h1>
+      <c:if test="${not (empty requestScope.messageKey)}">
+        <h3 class="message">
+     	    <fmt:message key="${requestScope.messageKey}"/>
+   	    </h3>
+   	  </c:if>
+   	  <html:errors/>
+      <c:choose>
+        <c:when test="${empty listForm.map.points}">
+          <fmt:message key="list.noentries"/>
+        </c:when>
+        <c:otherwise>
+          <table class="result">
+            <tr>
+              <th colspan="2">
+                <fmt:message key="list.regression.header"/>
+              </th>
+            </tr>
+            <tr>
+              <td><fmt:message key="list.regression.slope"/></td>
+              <td><c:out value="${listForm.map.slope}"/></td>
+            </tr>
+            <tr>
+              <td><fmt:message key="list.regression.yintercept"/></td>
+              <td><c:out value="${listForm.map.yIntercept}"/></td>
+            </tr>
+          </table>
+          <table id="pointsTable" class="points">
+            <tr>
+              <th>        
+                <fmt:message key="list.column.id"/>
+              </th>
+              <th>        
+                <fmt:message key="list.column.x"/>
+              </th>
+              <th>        
+                <fmt:message key="list.column.y"/>
+              </th>
+              <th>        
+                <fmt:message key="list.column.color"/>
+              </th>
+              <th>        
+                <fmt:message key="list.column.actions"/>
+              </th>
+            </tr>
+            <c:forEach items="${listForm.map.points}" var="entry">
+              <c:set var="id" value="${entry.id}"/>
+              <tr>
+                <td>
+                  <c:out value="${entry.id}"/>
+                </td>
+                <td>
+                  <c:out value="${entry.x}"/>
+                </td>
+                <td>
+                  <c:out value="${entry.y}"/>
+                </td>
+                <td>
+                  <fmt:message key="color.r${entry.color.red}g${entry.color.green}b${entry.color.blue}"/>
+                </td>
+                <td>
+                  <html:link action="/edit" paramId="id" paramName="id">
+                    <fmt:message key="list.action.edit"/>
+                  </html:link>
+                  <jsp:text> </jsp:text>
+                  <html:link action="/delete" paramId="id" paramName="id">
+                    <fmt:message key="list.action.delete"/>
+                  </html:link>
+                </td>
+              </tr>
+            </c:forEach>
+          </table>
+        </c:otherwise>
+      </c:choose>
+    </body>
+  </html:html>
+</jsp:root>

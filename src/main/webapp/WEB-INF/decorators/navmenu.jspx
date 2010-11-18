@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+  xmlns:fmt="/tld/jstl-fmt" 
+  xmlns:html="/tld/struts-html" 
+  version="2.0">
+  <table>
+    <tr>
+      <th>
+        <fmt:message key="navigation.heading"/>
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <html:link action="/list">
+          <fmt:message key="navigation.link.list"/>
+        </html:link>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <html:link action="/add">
+          <fmt:message key="navigation.link.add"/>
+        </html:link>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <html:link action="/init">
+          <fmt:message key="navigation.link.init"/>
+        </html:link>
+      </td>
+    </tr>
+  </table>
+</jsp:root>

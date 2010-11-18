@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+  xmlns:c="/tld/jstl-c" 
+  xmlns:fmt="/tld/jstl-fmt" 
+  xmlns:html="/tld/struts-html" 
+  version="2.0">
+  <jsp:directive.page contentType="text/html"/>
+  <html:xhtml/>
+  <html:html>
+    <head>
+      <title>
+        <fmt:message key="add.title"/>
+      </title>
+      <html:base/>
+    </head>
+    <body>
+      <h1>
+        <fmt:message key="global.heading"/>
+        <jsp:text>
+        </jsp:text>
+        <fmt:message key="add.heading"/>
+      </h1>
+      <html:errors/>
+      <html:form action="/addSubmit">
+        <table class="addedit">
+          <tr>
+            <td>
+              <fmt:message key="pointForm.prompt.x"/>
+            </td>
+            <td>
+              <html:text property="x"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <fmt:message key="pointForm.prompt.y"/>
+            </td>
+            <td>
+              <html:text property="y"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <fmt:message key="pointForm.prompt.color"/>
+            </td>
+            <td>
+              <html:select property="color">
+                <html:options property="colors"/>
+              </html:select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <html:submit>
+                <fmt:message key="add.submit"/>
+              </html:submit>
+            </td>
+          </tr>
+        </table>
+      </html:form>
+    </body>
+  </html:html>
+</jsp:root>

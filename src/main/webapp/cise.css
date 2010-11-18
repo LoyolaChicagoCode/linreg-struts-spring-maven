@@ -1,0 +1,71 @@
+body {
+	background: orange;
+	font-family: sans-serif;
+	color: black;
+	padding: 0px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	color: maroon;
+}
+
+h1 {
+	letter-spacing: 0.1em;
+}
+
+table {
+	border-style: none;
+}
+
+th {
+	color: maroon;
+}
+
+.message {
+	color: cyan;
+}
+
+.logo {
+	background: white;
+	vertical-align: middle;
+	border: none;
+}
+
+.headertext {
+	padding-left: 10px;
+}
+
+div.header {
+	padding-bottom: 20px;	
+}
+
+div.navmenu {
+	float: left;
+	width: 20%;
+}
+
+div.content {
+	float: left;
+	width: 80%;
+}
+
+div.footer {
+	clear: both;
+	padding-top: 20px;	
+}
+
+:link {
+	text-decoration: none;
+}
+
+:visited {
+	text-decoration: none;
+}
+
+:link :hover,:visited :hover {
+	text-decoration: underline;
+}
+
+:link :active,:visited :active {
+	text-decoration: none;
+}

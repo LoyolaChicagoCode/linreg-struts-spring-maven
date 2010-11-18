@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+  xmlns:decorator="/tld/sitemesh-decorator" 
+  xmlns:page="/tld/sitemesh-page" 
+  xmlns:c="/tld/jstl-c"
+  xmlns:fmt="/tld/jstl-fmt"
+  version="2.0">
+
+  <div class="header">
+    <span class="logo">
+      <c:url value="/images/logo.gif" var="logo"/>
+      <a href="http://cise.aip.org/cise/">
+        <img class="logo" src="${logo}" alt="[Logo]"/>
+      </a>
+    </span>
+    <span class="headertext">
+      <fmt:message key="header.text"/>
+    </span>
+  </div>
+  <div class="navmenu">
+    <page:applyDecorator name="panel" page="/WEB-INF/decorators/navmenu.jspx"/>
+  </div>
+  <div class="content">
+    <decorator:body/>
+  </div>
+  <div class="footer">
+    <fmt:message key="footer.text"/>
+  </div>
+
+</jsp:root>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+  xmlns:decorator="/tld/sitemesh-decorator" 
+  version="2.0">
+
+  <decorator:body />
+
+</jsp:root>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd"> 
+
+<beans> 
+
+  <!-- This context defines one Spring bean for each Struts action -->
+
+  <bean name="/add" class="points.web.NewAction"> 
+    <property name="regressionService"> 
+      <ref bean="regressionService"/> 
+    </property> 
+  </bean> 
+
+  <bean name="/addSubmit" class="points.web.AddAction"> 
+    <property name="regressionService"> 
+      <ref bean="regressionService"/> 
+    </property> 
+  </bean> 
+
+  <bean name="/delete" class="points.web.DeleteAction"> 
+    <property name="regressionService"> 
+      <ref bean="regressionService"/> 
+    </property> 
+  </bean> 
+
+  <bean name="/edit" class="points.web.FindAction"> 
+    <property name="regressionService"> 
+      <ref bean="regressionService"/> 
+    </property> 
+  </bean> 
+
+  <bean name="/editSubmit" class="points.web.EditAction"> 
+    <property name="regressionService"> 
+      <ref bean="regressionService"/> 
+    </property> 
+  </bean> 
+
+  <bean name="/init" class="points.web.InitAction"> 
+    <property name="regressionService"> 
+      <ref bean="regressionService"/> 
+    </property> 
+  </bean> 
+
+  <bean name="/list" class="points.web.ListAction"> 
+    <property name="regressionService"> 
+      <ref bean="regressionService"/> 
+    </property> 
+  </bean> 
+
+</beans>

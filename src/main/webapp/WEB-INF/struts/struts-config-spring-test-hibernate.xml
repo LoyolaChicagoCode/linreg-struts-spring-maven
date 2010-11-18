@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE struts-config PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+  "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+  <!-- This setting allows Spring to manage all Struts actions -->
+  <controller>
+    <set-property property="processorClass"
+      value="org.springframework.web.struts.DelegatingRequestProcessor"/>
+  </controller>
+  
+  <!-- This plugin loads a Spring context for the Struts action servlet  -->
+  <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">  
+	<set-property property="contextConfigLocation"
+      value="/WEB-INF/struts/action-servlet.xml, classpath:applicationContextService.xml, classpath:applicationContextHibernateDAO.xml, classpath:applicationContextBasicDataSource.xml"/>
+  </plug-in>
+  
+</struts-config>

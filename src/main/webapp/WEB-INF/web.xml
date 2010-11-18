@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+
+	<!-- Expose resources to JSTL -->
+	<context-param>
+		<param-name>
+			javax.servlet.jsp.jstl.fmt.localizationContext
+		</param-name>
+		<param-value>points.web.ApplicationResources</param-value>
+	</context-param>
+
+	<!-- 
+		To support MockStrutsTestCase, we have to set this property in the 
+		ContextLoaderPlugin in struts-config.xml.  See also 15.4.1 in
+		http://www.springframework.org/docs/reference/webintegration.html  
+	-->
+	<!-- 
+		<context-param> 
+		<param-name>contextConfigLocation</param-name> 
+		<param-value>/WEB-INF/applicationContext*.xml</param-value> 
+		</context-param> 
+	-->
+
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+
+	<!-- Standard Action Servlet Configuration (with debugging) -->
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>
+			org.apache.struts.action.ActionServlet
+		</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts/struts-config.xml, /WEB-INF/struts/struts-config-spring-production.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Standard Action Servlet Mapping -->
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>sitemesh</filter-name>
+		<filter-class>
+			com.opensymphony.module.sitemesh.filter.PageFilter
+		</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>sitemesh</filter-name>
+		<url-pattern>/*</url-pattern>
+	    <dispatcher>REQUEST</dispatcher>
+   		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+
+	<!-- The Usual Welcome File List -->
+	<welcome-file-list>
+		<welcome-file>index.jspx</welcome-file>
+	</welcome-file-list>
+
+	<jsp-config>
+		<!-- Define symbolic names for taglibs -->
+		<taglib>
+			<taglib-uri>/tld/struts-html</taglib-uri>
+			<taglib-location>
+				/WEB-INF/tld/struts-html.tld
+			</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tld/jstl-c</taglib-uri>
+			<taglib-location>/WEB-INF/tld/c.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tld/jstl-fmt</taglib-uri>
+			<taglib-location>/WEB-INF/tld/fmt.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tld/sitemesh-decorator</taglib-uri>
+			<taglib-location>
+				/WEB-INF/tld/sitemesh-decorator.tld
+			</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tld/sitemesh-page</taglib-uri>
+			<taglib-location>
+				/WEB-INF/tld/sitemesh-page.tld
+			</taglib-location>
+		</taglib>
+
+		<!-- Disable scripting in JSPs -->
+		<jsp-property-group>
+			<url-pattern>*.jspx</url-pattern>
+			<scripting-invalid>true</scripting-invalid>
+		</jsp-property-group>
+	</jsp-config>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Modification actions</web-resource-name>
+			<url-pattern>/edit.do</url-pattern>
+			<url-pattern>/delete.do</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>pointadmin</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<login-config>
+		<auth-method>BASIC</auth-method>
+		<realm-name>Linear Regression</realm-name>
+		<!--
+			<form-login-config>
+			<form-login-page>/login.jsp</form-login-page>
+			<form-error-page>/error.jsp</form-error-page>
+			</form-login-config>
+		-->
+	</login-config>
+
+	<security-role>
+		<role-name>pointadmin</role-name>
+	</security-role>
+
+</web-app>
