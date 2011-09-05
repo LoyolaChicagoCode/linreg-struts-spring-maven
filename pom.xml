@@ -2,7 +2,7 @@
 <project>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>LinearRegression</groupId>
-	<artifactId>LinearRegressionMaven</artifactId>
+	<artifactId>linreg-struts-maven</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<description>CiSE Linear Regression example</description>
